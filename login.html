@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - البنك</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #2193b0;
+            --primary-dark: #1a7a92;
+            --primary-light: #6dd5ed;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--primary-light), var(--bg-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.1));
+            pointer-events: none;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .login-header h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .login-header h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--primary-color);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .login-header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 40px 15px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .form-group i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .form-group i.fas {
+            color: var(--primary-color);
+        }
+
+        .btn-login {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-login::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 147, 176, 0.3);
+        }
+
+        .btn-login:hover::before {
+            left: 100%;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .remember-me label {
+            color: #666;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .forgot-password a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .register-link a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(220, 53, 69, 0.1);
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 30px 20px;
+            }
+
+            .btn-login {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>تسجيل الدخول</h1>
+            <p>مرحباً بك في نظام البنك</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="accountNumber" placeholder="رقم الحساب" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-key"></i>
+                <input type="password" id="password" placeholder="كلمة المرور" required>
+            </div>
+
+            <div class="remember-me">
+                <input type="checkbox" id="remember">
+                <label for="remember">تذكرني</label>
+            </div>
+
+            <button type="submit" class="btn-login">
+                <i class="fas fa-sign-in-alt"></i>
+                تسجيل الدخول
+            </button>
+
+            <div class="forgot-password">
+                <a href="#">نسيت كلمة المرور؟</a>
+            </div>
+
+            <div class="register-link">
+                <p>ليس لديك حساب؟ <a href="register.html">إنشاء حساب جديد</a></p>
+            </div>
+
+            <div class="error-message" id="error-message">
+                <!-- سيتم عرض رسالة الخطأ هنا -->
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // التحقق من صحة تسجيل الدخول
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const accountNumber = document.getElementById('accountNumber').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            // التحقق من صحة البيانات
+            if (accountNumber.length < 10 || password.length < 6) {
+                errorMessage.textContent = 'رقم الحساب يجب أن يكون 10 أرقام على الأقل وكلمة المرور 6 أحرف على الأقل';
+                errorMessage.classList.add('show');
+                return;
+            }
+            
+            // إخفاء رسالة الخطأ إذا كانت ظاهرة
+            errorMessage.classList.remove('show');
+            
+            // هنا يمكن إضافة كود تسجيل الدخول الفعلي
+            console.log('تسجيل دخول:', { accountNumber, password });
+            
+            // توجيه إلى لوحة التحكم بعد تسجيل الدخول
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

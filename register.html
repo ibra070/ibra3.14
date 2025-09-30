@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب - البنك</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+    <style>
+        :root {
+            --primary-color: #2193b0;
+            --primary-dark: #1a7a92;
+            --primary-light: #6dd5ed;
+            --bg-color: #f8f9fa;
+            --text-color: #333;
+            --error-color: #dc3545;
+            --success-color: #28a745;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, var(--primary-light), var(--bg-color));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .register-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .register-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.1));
+            pointer-events: none;
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .register-header h1 {
+            color: var(--primary-color);
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .register-header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 40px 15px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .form-group i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .form-group i.fas {
+            color: var(--primary-color);
+        }
+
+        .btn-register {
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-register::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-register:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(33, 147, 176, 0.3);
+        }
+
+        .btn-register:hover::before {
+            left: 100%;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(220, 53, 69, 0.1);
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .success-message {
+            color: var(--success-color);
+            text-align: center;
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(40, 167, 69, 0.1);
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @media (max-width: 480px) {
+            .register-container {
+                padding: 30px 20px;
+            }
+
+            .btn-register {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <h1>إنشاء حساب جديد</h1>
+            <p>أهلاً بك في نظام البنك</p>
+        </div>
+
+        <form id="registerForm">
+            <div class="form-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="fullName" placeholder="الاسم الكامل" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-id-card"></i>
+                <input type="text" id="nationalID" placeholder="رقم الهوية" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phoneNumber" placeholder="رقم الهاتف" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="كلمة المرور" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="confirmPassword" placeholder="تأكيد كلمة المرور" required>
+            </div>
+
+            <div class="form-group">
+                <i class="fas fa-money-bill-wave"></i>
+                <input type="number" id="initialBalance" placeholder="الرصيد الابتدائي" required>
+            </div>
+
+            <button type="submit" class="btn-register">
+                <i class="fas fa-user-plus"></i>
+                إنشاء حساب
+            </button>
+
+            <div class="error-message" id="error-message">
+                <!-- سيتم عرض رسالة الخطأ هنا -->
+            </div>
+
+            <div class="success-message" id="success-message">
+                <!-- سيتم عرض رسالة النجاح هنا -->
+            </div>
+
+            <div class="have-account">
+                <p>لديك حساب؟ <a href="login.html">تسجيل الدخول</a></p>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // التحقق من صحة التسجيل
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value;
+            const nationalID = document.getElementById('nationalID').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const initialBalance = document.getElementById('initialBalance').value;
+            
+            const errorMessage = document.getElementById('error-message');
+            const successMessage = document.getElementById('success-message');
+            
+            // تحقق من صحة البيانات
+            if (fullName.length < 3) {
+                errorMessage.textContent = 'الاسم الكامل يجب أن يكون 3 أحرف على الأقل';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            if (nationalID.length !== 10) {
+                errorMessage.textContent = 'رقم الهوية يجب أن يكون 10 أرقام';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            if (phoneNumber.length !== 10) {
+                errorMessage.textContent = 'رقم الهاتف يجب أن يكون 10 أرقام';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            if (!email.includes('@')) {
+                errorMessage.textContent = 'البريد الإلكتروني غير صحيح';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            if (password.length < 8) {
+                errorMessage.textContent = 'كلمة المرور يجب أن تكون 8 أحرف على الأقل';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                errorMessage.textContent = 'كلمات المرور غير متطابقة';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            if (initialBalance < 100) {
+                errorMessage.textContent = 'الرصيد الابتدائي يجب أن يكون 100 ريال على الأقل';
+                errorMessage.classList.add('show');
+                return;
+            }
+
+            // إخفاء رسالة الخطأ إذا كانت ظاهرة
+            errorMessage.classList.remove('show');
+            
+            // إظهار رسالة النجاح
+            successMessage.textContent = 'تم إنشاء حسابك بنجاح!';
+            successMessage.classList.add('show');
+            
+            // هنا يمكن إضافة كود تسجيل الحساب الفعلي
+            console.log('تم التسجيل بنجاح:', {
+                fullName,
+                nationalID,
+                phoneNumber,
+                email,
+                password,
+                initialBalance
+            });
+        });
+    </script>
+</body>
+</html>
