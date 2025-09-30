@@ -125,6 +125,101 @@
         .back-link:hover {
             color: var(--secondary-color);
         }
+
+        .table-of-contents {
+            margin: 2rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #f0f7ff 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .table-of-contents h2 {
+            color: #1e40af;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e7ff;
+            position: relative;
+        }
+
+        .table-of-contents h2::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 3px;
+        }
+
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+        }
+
+        .toc-column {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            padding: 0.5rem;
+        }
+
+        .toc-column h3 {
+            color: #3b82f6;
+            margin: 0.5rem 0;
+            padding-right: 0.5rem;
+            border-right: 3px solid #3b82f6;
+            font-size: 1.1rem;
+        }
+
+        .toc-column a {
+            display: flex;
+            align-items: center;
+            padding: 0.6rem 1rem;
+            background: white;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #4b5563;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        .toc-column a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: #3b82f6;
+            border-color: #bfdbfe;
+            background: #f8fafc;
+        }
+
+        .toc-column a::before {
+            content: "•";
+            color: #3b82f6;
+            margin-left: 8px;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .toc-column a:hover::before {
+            transform: scale(1.5);
+        }
+
+        @media (max-width: 768px) {
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toc-column {
+                padding: 0.5rem 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -136,8 +231,50 @@
 
         <h1 class="text-center mb-4">مصطلحات أساسية في الشبكات</h1>
 
-         <!-- DHCP -->
-         <div class="term-card">
+        <!-- فهرس المحتويات -->
+        <div class="term-card table-of-contents">
+            <h2>Table of Contents</h2>
+            <div class="toc-grid">
+                <div class="toc-column">
+                    <h3>أساسيات الشبكات</h3>
+                    <a href="#dhcp">DHCP</a>
+                    <a href="#nat">NAT</a>
+                    <a href="#isp">ISP</a>
+                    <a href="#mac-address">MAC Address</a>
+                    <a href="#dns">DNS</a>
+                    <a href="#url">URL</a>
+                </div>
+                <div class="toc-column">
+                    <h3>مكونات الشبكة</h3>
+                    <a href="#modem">Modem</a>
+                    <a href="#router">Router</a>
+                    <a href="#gateway">Gateway</a>
+                    <a href="#mesh-network">Mesh Network</a>
+                    <a href="#vlan">VLAN</a>
+                    <a href="#arp">ARP</a>
+                </div>
+                <div class="toc-column">
+                    <h3>الأمان والحماية</h3>
+                    <a href="#ssl-tls">SSL/TLS</a>
+                    <a href="#wpa">WPA/WPA2/WPA3</a>
+                    <a href="#http-https">HTTP/HTTPS</a>
+                    <a href="#qos">QoS</a>
+                    <a href="#dmz">DMZ</a>
+                </div>
+                <div class="toc-column">
+                    <h3>تقنيات متقدمة</h3>
+                    <a href="#api">API</a>
+                    <a href="#ipv4-ipv6">IPv4/IPv6</a>
+                    <a href="#3-tier-architecture">3-Tier Architecture</a>
+                    <a href="#bi">Business Intelligence</a>
+                    <a href="#nat-pmp">NAT-PMP/UPnP</a>
+                </div>
+            </div>
+        </div>
+        <!-- نهاية فهرس المحتويات -->
+
+        <!-- DHCP -->
+        <div class="term-card" id="dhcp">
             <h2 class="term-title">DHCP</h2>
             <p class="term-subtitle">(Dynamic Host Configuration Protocol)</p>
             <p>بروتوكول تلقائي لتوزيع عناوين IP وتكوين إعدادات الشبكة على الأجهزة.</p>
@@ -218,7 +355,7 @@
         </div>
 
       <!-- NAT -->
-      <div class="term-card">
+      <div class="term-card" id="nat">
         <h2 class="term-title">NAT</h2>
         <p class="term-subtitle">(Network Address Translation)</p>
         <p>تقنية تحويل عناوين IP، تسمح لأجهزة الشبكة المحلية باستخدام عنوان IP واحد للاتصال بالإنترنت.</p>
@@ -256,7 +393,7 @@
                 <li>الشبكات المحلية (LAN)</li>
                 <li>المدارس والجامعات</li>
                 <li>الشركات</li>
-                <li>المكاتب</li>
+                <li>المدارس</li>
             </ul>
         </div>
 
@@ -299,8 +436,8 @@
     </div>
 
         <!-- ISP -->
-        <div class="term-card">
-            <h2 class="term-title">3. ISP</h2>
+        <div class="term-card" id="isp">
+            <h2 class="term-title">ISP</h2>
             <p class="term-subtitle">(Internet Service Provider)</p>
             <p>مزود خدمة الإنترنت، مثل:</p>
             <div class="info-grid">
@@ -361,7 +498,7 @@
        
 
         <!-- MAC Address -->
-        <div class="term-card">
+        <div class="term-card" id="mac-address">
             <h2 class="term-title">MAC Address</h2>
             <p class="term-subtitle">(Media Access Control Address)</p>
             <p>عنوان فريد لكل جهاز شبكة في العالم، يتكون من 6 أزواج من الأرقام والأحرف.</p>
@@ -444,7 +581,7 @@
       
 
         <!-- DNS -->
-        <div class="term-card">
+        <div class="term-card" id="dns">
             <h2 class="term-title">DNS</h2>
             <p class="term-subtitle">(Domain Name Server)</p>
             <p>نظام يحوّل أسماء المواقع إلى عناوين IP رقمية، مثل تحويل www.google.com إلى 172.217.16.174.</p>
@@ -531,7 +668,7 @@
         </div>
 
         <!-- URL -->
-        <div class="term-card">
+        <div class="term-card" id="url">
             <h2 class="term-title">URL</h2>
             <p class="term-subtitle">(Uniform Resource Locator)</p>
             <p>عنوان موحد للموارد على الإنترنت.</p>
@@ -570,7 +707,7 @@
         </div>
 
         <!-- FTP -->
-        <div class="term-card">
+        <div class="term-card" id="ftp">
             <h2 class="term-title">FTP</h2>
             <p class="term-subtitle">(File Transfer Protocol)</p>
             <p>بروتوكول نقل الملفات عبر الإنترنت.</p>
@@ -612,7 +749,7 @@
 
       
         <!-- Modem -->
-        <div class="term-card">
+        <div class="term-card" id="modem">
             <h2 class="term-title">Modem</h2>
             <p class="term-subtitle">(Modulator-Demodulator)</p>
             <p>جهاز يستقبل الإنترنت من مزود الخدمة (ISP) وتحويل الإشارات من نوع إلى آخر.</p>
@@ -649,7 +786,7 @@
         </div>
 
         <!-- Router -->
-        <div class="term-card">
+        <div class="term-card" id="router">
             <h2 class="term-title">Router</h2>
             <p class="term-subtitle">(Router)</p>
             <p>جهاز يربط عدة أجهزة داخل الشبكة ويدير حركة البيانات بينها.</p>
@@ -687,7 +824,7 @@
         </div>
 
         <!-- Gateway -->
-        <div class="term-card">
+        <div class="term-card" id="gateway">
             <h2 class="term-title">Gateway</h2>
             <p class="term-subtitle">(Gateway)</p>
             <p>جهاز يجمع بين وظائف Modem و Router في جهاز واحد.</p>
@@ -725,7 +862,7 @@
         </div>
 
         <!-- Mesh Network -->
-        <div class="term-card">
+        <div class="term-card" id="mesh-network">
             <h2 class="term-title">Mesh Network</h2>
             <p class="term-subtitle">(شبكة الماش)</p>
             <p>نظام متقدم لتوزيع الواي فاي في كل أنحاء المكان.</p>
@@ -764,7 +901,7 @@
         </div>
 
         <!-- SSL و TLS -->
-        <div class="term-card">
+        <div class="term-card" id="ssl-tls">
             <h2 class="term-title">SSL و TLS</h2>
             <p class="term-subtitle">(Secure Sockets Layer و Transport Layer Security)</p>
             <p>بروتوكولات تشفير لحماية البيانات أثناء نقلها عبر الإنترنت.</p>
@@ -854,7 +991,7 @@
         </div>
 
         <!-- API -->
-        <div class="term-card">
+        <div class="term-card" id="api">
             <h2 class="term-title">API</h2>
             <p class="term-subtitle">(Application Programming Interface)</p>
             <p>مجموعة من القواعد والبروتوكولات التي تسمح للتطبيقات بالتواصل مع بعضها البعض وتبادل البيانات.</p>
@@ -945,7 +1082,7 @@
         </div>
 
         <!-- IPv4 و IPv6 -->
-        <div class="term-card">
+        <div class="term-card" id="ipv4-ipv6">
             <h2 class="term-title">IPv4 و IPv6</h2>
             <p class="term-subtitle">(Internet Protocol version 4 و version 6)</p>
             <p>بروتوكولات لتحديد عناوين الأجهزة على الإنترنت.</p>
@@ -976,7 +1113,7 @@
 
       
         <!-- HTTP و HTTPS -->
-        <div class="term-card">
+        <div class="term-card" id="http-https">
             <h2 class="term-title">HTTP و HTTPS</h2>
             <p class="term-subtitle">(HyperText Transfer Protocol و Secure HyperText Transfer Protocol)</p>
             <p>بروتوكولات لنقل البيانات على الإنترنت.</p>
@@ -1071,7 +1208,7 @@
 
        
         <!-- VLAN -->
-        <div class="term-card">
+        <div class="term-card" id="vlan">
             <h2 class="term-title">VLAN</h2>
             <p class="term-subtitle">(Virtual Local Area Network)</p>
             <p>شبكة محلية افتراضية تسمح بفصل الشبكات المنطقية داخل نفس الشبكة الفيزيائية.</p>
@@ -1101,7 +1238,7 @@
         </div>
 
         <!-- ARP -->
-        <div class="term-card">
+        <div class="term-card" id="arp">
             <h2 class="term-title">ARP</h2>
             <p class="term-subtitle">(Address Resolution Protocol)</p>
             <p>بروتوكول يربط بين عنوان IP وعنوان MAC.</p>
@@ -1135,7 +1272,7 @@
        
 
          <!-- 3-Tier Architecture -->
-         <div class="term-card">
+         <div class="term-card" id="3-tier-architecture">
             <h2 class="term-title">3-Tier Architecture</h2>
             <p class="term-subtitle">(هندسة ثلاثية الطبقات)</p>
             <p>هي نموذج تصميم يقسم تطبيق الحاسوب إلى ثلاث طبقات منفصلة:</p>
@@ -1216,7 +1353,7 @@
                 <div class="info-item">
                     <i class="fas fa-info-circle info-icon"></i>
                     <div class="info-title">نصائح مهمة</div>
-                    <div class="info-description">فصل المهام بوضوح<br>تحديد واجهات الاتصال<br>تحسين أداء كل طبقة<br>ضمان أمن البيانات</div>
+                    <div class="info-description">فصل المهام بوضوح<br>تحديد واجهات الاتصال<br>تحسين أداء كل طبقة<br>ضمان أمان البيانات</div>
                 </div>
             </div>
         </div>
@@ -1224,7 +1361,7 @@
 
        
         <!-- Business Intelligence (BI) -->
-        <div class="term-card">
+        <div class="term-card" id="bi">
             <h2 class="term-title">Business Intelligence (BI)</h2>
             <p class="term-subtitle">(الذكاء التجاري)</p>
             <p>مجموعة من التقنيات والعمليات التي تستخدم لتحليل البيانات وتقديم المعلومات اللازمة لاتخاذ القرارات التجارية.</p>
@@ -1307,7 +1444,7 @@
         </div>
 
         <!-- إضافات جديدة -->
-        <div class="term-card">
+        <div class="term-card" id="wpa">
             <h2 class="term-title">WPA و WPA2 و WPA3</h2>
             <p class="term-subtitle">(Wi-Fi Protected Access)</p>
             <p>بروتوكولات تشفير لشبكات الواي فاي.</p>
@@ -1342,7 +1479,7 @@
             </div>
         </div>
 
-        <div class="term-card">
+        <div class="term-card" id="nat-pmp">
             <h2 class="term-title">NAT-PMP و UPnP</h2>
             <p class="term-subtitle">(NAT Port Mapping Protocol و Universal Plug and Play)</p>
             <p>بروتوكولات تسهل توجيه المنافذ في الشبكات.</p>
@@ -1361,7 +1498,7 @@
             </div>
         </div>
 
-        <div class="term-card">
+        <div class="term-card" id="qos">
             <h2 class="term-title">QoS</h2>
             <p class="term-subtitle">(Quality of Service)</p>
             <p>تقنية تحكم في جودة الخدمة وتنظيم حركة البيانات.</p>
@@ -1390,7 +1527,7 @@
             </div>
         </div>
 
-        <div class="term-card">
+        <div class="term-card" id="dmz">
             <h2 class="term-title">DMZ</h2>
             <p class="term-subtitle">(Demilitarized Zone)</p>
             <p>منطقة عازلة بين الشبكة الداخلية والإنترنت.</p>
@@ -1402,6 +1539,50 @@
         </div>
     </div>
 
+    <script>
+        function toggleDetails(id) {
+            const element = document.getElementById(id);
+            const button = element.previousElementSibling.querySelector('.toggle-details');
+            
+            // Toggle the 'show' class on the details element
+            element.classList.toggle('show');
+            
+            // Update button text
+            if (element.classList.contains('show')) {
+                button.textContent = 'إخفاء التفاصيل';
+            } else {
+                button.textContent = 'عرض التفاصيل';
+            }
+        }
+
+        // Close other open details when one is opened
+        document.querySelectorAll('.term-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const currentId = this.nextElementSibling.id;
+                document.querySelectorAll('.term-details').forEach(detail => {
+                    if (detail.id !== currentId) {
+                        detail.classList.remove('show');
+                        const btn = detail.previousElementSibling.querySelector('.toggle-details');
+                        if (btn) btn.textContent = 'عرض التفاصيل';
+                    }
+                });
+            });
+        });
+
+        // Handle direct anchor links (e.g., example.com/page#section)
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1) + '-details';
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.classList.add('show');
+                    const button = targetElement.previousElementSibling.querySelector('.toggle-details');
+                    if (button) button.textContent = 'إخفاء التفاصيل';
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
