@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدير أوامر </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
+    <style>
+        :root {
+            --primary-color: #25D366; /* Darker green */
+            --secondary-color: #1DA1F2; /* Twitter blue */
+            --danger-color: #DC2626; /* Modern red */
+            --text-color: #1A1A1A; /* Darker text */
+            --light-bg: #F5F5F5; /* Lighter gray */
+            --border-color: #E5E5E5; /* Lighter border */
+            --success-bg: #25D366;
+            --success-text: #ffffff;
+            --error-bg: #DC2626;
+            --error-text: #ffffff;
+            --card-bg: #FFFFFF; /* Pure white for cards */
+            --command-bg: #F8FAFC; /* Lighter command background */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-color);
+            padding: 20px;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-size: 1.2em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            padding: 8px;
+        }
+
+        .back-button:hover {
+            transform: translateX(-2px);
+            background-color: var(--command-bg);
+            color: var(--primary-color);
+        }
+
+        .back-button i {
+            font-size: 1.5em;
+        }
+
+        h1 {
+            text-align: center;
+            color: #34495e;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 600;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 15px;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        input, textarea, select {
+            font-size: 1em;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .command-text {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 1.1em;
+            line-height: 1.6;
+            background-color: #2D2D2D;
+            color: #FFFFFF;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border: 1px solid #3A3A3A;
+        }
+
+        .command-type {
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .command-description {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        button {
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 120px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #ffffff;
+            color: var(--text-color);
+            font-family: inherit;
+            transition: all 0.3s ease;
+            margin-top: 25px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+        }
+
+        .search-form-group {
+            margin-top: 25px;
+        }
+
+        .search-form-group label {
+            margin-bottom: 15px;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #34495e;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.1);
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .command-form {
+            background-color: var(--command-bg);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .filter-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--command-bg);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .filter-section select {
+            width: 200px;
+        }
+
+        .command-card {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .command-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .command-content {
+            margin-bottom: 15px;
+        }
+
+        .command-type {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            padding: 8px 15px;
+            background-color: rgba(29, 161, 242, 0.1);
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        .command-text {
+            background-color: #f8fafc;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Consolas', monospace;
+            color: #2c3e50;
+            border: 1px solid #e1e8ef;
+            margin: 8px 0;
+            direction: ltr;
+        }
+
+        .description-container {
+            background-color: var(--light-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .command-description {
+            color: #5d6d7e;
+            line-height: 1.6;
+            font-size: 1em;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .button-group button {
+            padding: 4px 8px;
+            font-size: 0.75em;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .save-btn {
+            background-color: var(--primary-color);
+            color: var(--success-text);
+            padding: 10px 25px;
+            font-size: 1em;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .save-btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 204, 113, 0.2);
+        }
+
+        .save-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(46, 204, 113, 0.1);
+        }
+
+        .copy-btn {
+            background-color: #95a5a6;
+            color: white;
+        }
+
+        .copy-btn:hover {
+            background-color: #7f8c8d;
+        }
+
+        .edit-btn {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .edit-btn:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+        }
+
+        .delete-btn {
+            background-color: var(--danger-color);
+            color: var(--error-text);
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
+        }
+
+        .delete-btn:hover {
+            background-color: #c0392b;
+        }
+
+        .success-message {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--success-bg);
+            color: var(--success-text);
+            padding: 15px 30px;
+            border-radius: 10px;
+            display: none;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.2);
+        }
+</style>
+</head>
+<body>
+    <div class="container">
+        <button class="back-button" onclick="window.location.href='index.html'">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+        <h1>مدير أوامر</h1>
+        
+        <!-- إضافة قسم الفرز -->
+        <div class="filter-section">
+            <select id="filterType">
+                <option value="all">كل الأوامر</option>
+                <option value="cmd">CMD</option>
+                <option value="powershell">PowerShell</option>
+                <option value="run">Run</option>
+            </select>
+        </div>
+        
+        <form class="command-form" id="commandForm">
+            <div class="form-group">
+                <label>نوع الأمر</label>
+                <select id="typeInput" required>
+                    <option value="cmd">CMD</option>
+                    <option value="powershell">PowerShell</option>
+                    <option value="run">Run</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>الأمر</label>
+                <input type="text" id="commandInput" placeholder="أدخل الأمر هنا" required>
+            </div>
+            <div class="form-group">
+                <label>الوصف</label>
+                <textarea id="descriptionInput" placeholder="اكتب وصف الأمر وكيفية استخدامه" required></textarea>
+            </div>
+            <button type="submit" class="save-btn">حفظ الأمر</button>
+            <div class="search-form-group">
+                <label>البحث عن الأمر</label>
+                <input type="text" id="commandSearch" placeholder="ابحث عن الأمر أو الوصف..." class="search-input">
+            </div>
+        </form>
+
+        <div class="command-list" id="commandList"></div>
+    </div>
+
+    <div class="success-message" id="successMessage">تم نسخ الأمر بنجاح!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const commandForm = document.getElementById('commandForm');
+            const commandList = document.getElementById('commandList');
+            const successMessage = document.getElementById('successMessage');
+            const filterType = document.getElementById('filterType');
+            
+            const commands = JSON.parse(localStorage.getItem('commands')) || [
+            {
+                type: 'cmd',
+                command: 'ipconfig',
+                description: 'عرض معلومات الشبكة ومعرفة عنوان IP الخاص بالجهاز'
+            },
+            {
+                type: 'cmd',
+                command: 'ping www.google.com',
+                description: 'اختبار اتصال الإنترنت عن طريق إرسال ping إلى Google'
+            },
+            {
+                type: 'cmd',
+                command: 'netstat -ano',
+                description: 'عرض جميع الاتصالات النشطة ورقم المنفذ لكل اتصال'
+            },
+            {
+                type: 'cmd',
+                command: 'tasklist',
+                description: 'عرض قائمة جميع البرامج والخدمات النشطة في النظام'
+            },
+            {
+                type: 'cmd',
+                command: 'netsh wlan show profiles',
+                description: 'عرض جميع شبكات Wi-Fi التي تم الاتصال بها سابقاً'
+            },
+            {
+                type: 'cmd',
+                command: 'sfc /scannow',
+                description: 'فحص وتصحيح ملفات النظام التالفة'
+            },
+            {
+                type: 'cmd',
+                command: 'chkdsk /f',
+                description: 'فحص القرص الصلب وإصلاح الأخطاء (يحتاج إلى إعادة تشغيل)' 
+            },
+            {
+                type: 'cmd',
+                command: 'del /f /q /s %temp%\*',
+                description: 'حذف ملفات المؤقت في النظام'
+            },
+            {
+                type: 'cmd',
+                command: 'shutdown /s /t 0',
+                description: 'إيقاف تشغيل الكمبيوتر فوراً'
+            },
+            {
+                type: 'cmd',
+                command: 'msconfig',
+                description: 'فتح أداة إعدادات النظام لإدارة البرامج التي تبدأ مع Windows'
+            }
+        ];
+
+            // إضافة مستمع حدث للفرز
+            filterType.addEventListener('change', () => {
+                renderCommands();
+            });
+
+            function renderCommands() {
+                commandList.innerHTML = '';
+                const selectedType = filterType.value;
+                const searchTerm = document.getElementById('commandSearch').value.toLowerCase();
+                
+                let filteredCommands = selectedType === 'all' 
+                    ? commands 
+                    : commands.filter(cmd => cmd.type === selectedType);
+
+                if (searchTerm) {
+                    filteredCommands = filteredCommands.filter(cmd => 
+                        cmd.command.toLowerCase().includes(searchTerm) ||
+                        cmd.description.toLowerCase().includes(searchTerm)
+                    );
+                }
+
+                filteredCommands.forEach((cmd, index) => {
+                    const commandCard = document.createElement('div');
+                    commandCard.className = 'command-card';
+                    commandCard.innerHTML = `
+                        <div class="command-content">
+                            <div class="command-type">${cmd.type.toUpperCase()}</div>
+                            <div class="command-text">${cmd.command}</div>
+                            <div class="description-container">
+                                <div class="command-description">${cmd.description}</div>
+                            </div>
+                        </div>
+                        <div class="button-group">
+                            <button class="copy-btn">نسخ</button>
+                            <button class="edit-btn">تعديل</button>
+                            <button class="delete-btn">حذف</button>
+                        </div>
+                    `;
+
+                    const copyBtn = commandCard.querySelector('.copy-btn');
+                    const editBtn = commandCard.querySelector('.edit-btn');
+                    const deleteBtn = commandCard.querySelector('.delete-btn');
+
+                    copyBtn.addEventListener('click', () => {
+                        navigator.clipboard.writeText(cmd.command);
+                        showSuccessMessage();
+                    });
+
+                    deleteBtn.addEventListener('click', () => {
+                        if (confirm('هل أنت متأكد من حذف هذا الأمر؟')) {
+                            commands.splice(index, 1);
+                            saveCommands();
+                            renderCommands();
+                        }
+                    });
+
+                    editBtn.addEventListener('click', () => {
+                        const commandContent = commandCard.querySelector('.command-content');
+                        commandContent.innerHTML = `
+                            <div class="form-group">
+                                <select class="edit-type">
+                                    <option value="cmd" ${cmd.type === 'cmd' ? 'selected' : ''}>CMD</option>
+                                    <option value="run" ${cmd.type === 'run' ? 'selected' : ''}>Run</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="edit-command" value="${cmd.command}">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="edit-description">${cmd.description}</textarea>
+                            </div>
+                            <div class="button-group">
+                                <button class="save-btn">حفظ</button>
+                                <button class="delete-btn">إلغاء</button>
+                            </div>
+                        `;
+
+                        const saveBtn = commandContent.querySelector('.save-btn');
+                        const cancelBtn = commandContent.querySelector('.delete-btn');
+
+                        saveBtn.addEventListener('click', () => {
+                            const editedCommand = {
+                                type: commandContent.querySelector('.edit-type').value,
+                                command: commandContent.querySelector('.edit-command').value.trim(),
+                                description: commandContent.querySelector('.edit-description').value.trim()
+                            };
+
+                            if (editedCommand.command && editedCommand.description) {
+                                commands[index] = editedCommand;
+                                saveCommands();
+                                renderCommands();
+                            }
+                        });
+
+                        cancelBtn.addEventListener('click', () => {
+                            renderCommands();
+                        });
+                    });
+
+                    commandList.appendChild(commandCard);
+                });
+            }
+
+            function saveCommands() {
+                localStorage.setItem('commands', JSON.stringify(commands));
+            }
+
+            commandForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const newCommand = {
+                    type: document.getElementById('typeInput').value,
+                    command: document.getElementById('commandInput').value.trim(),
+                    description: document.getElementById('descriptionInput').value.trim()
+                };
+
+                commands.push(newCommand);
+                saveCommands();
+                renderCommands();
+                commandForm.reset();
+            });
+
+            // إضافة مستمع حدث للبحث
+            const commandSearch = document.getElementById('commandSearch');
+            commandSearch.addEventListener('input', () => {
+                renderCommands();
+            });
+
+            renderCommands();
+        });
+    </script>
+</body>
+</html>

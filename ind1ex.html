@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول - منصة المطور</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap">
+  <style>
+    :root {
+      --primary-color: #2193b0;
+      --primary-dark: #1a7a92;
+      --primary-light: #6dd5ed;
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --error-color: #dc3545;
+      --success-color: #28a745;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: linear-gradient(135deg, var(--primary-light), var(--bg-color));
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background: white;
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .login-box::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent, rgba(255,255,255,0.1));
+      pointer-events: none;
+    }
+
+    h2 {
+      text-align: center;
+      color: var(--primary-color);
+      margin-bottom: 30px;
+      font-size: 24px;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--primary-color);
+      border-radius: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 15px 40px 15px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+
+    .form-group i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+
+    .form-group i.fas {
+      color: var(--primary-color);
+    }
+
+    .btn-login {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-login::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(33, 147, 176, 0.3);
+    }
+
+    .btn-login:hover::before {
+      left: 100%;
+    }
+
+    .forgot-password {
+      text-align: center;
+      margin-top: 20px;
+      color: #666;
+    }
+
+    .forgot-password a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .forgot-password a:hover {
+      text-decoration: underline;
+    }
+
+    .social-login {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .social-login h3 {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+    }
+
+    .social-buttons button {
+      background: white;
+      border: 1px solid #e0e0e0;
+      padding: 12px;
+      border-radius: 8px;
+      width: 100%;
+      max-width: 150px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .social-buttons button:hover {
+      border-color: var(--primary-color);
+      transform: translateY(-2px);
+    }
+
+    .social-buttons i {
+      color: var(--primary-color);
+      font-size: 18px;
+    }
+
+    .error-message {
+      color: var(--error-color);
+      text-align: center;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 5px;
+      background: rgba(220, 53, 69, 0.1);
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    @media (max-width: 480px) {
+      .login-box {
+        padding: 30px 20px;
+      }
+
+      .btn-login {
+        padding: 12px 25px;
+      }
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .error {
+      color: red;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>تسجيل الدخول</h2>
+    
+    <form id="loginForm">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" id="username" placeholder="اسم المستخدم" required>
+      </div>
+      
+      <div class="form-group">
+        <i class="fas fa-lock"></i>
+        <input type="password" id="password" placeholder="كلمة المرور" required>
+      </div>
+      
+      <div class="form-group">
+        <input type="checkbox" id="remember">
+        <label for="remember">تذكرني</label>
+      </div>
+      
+      <button type="submit" class="btn-login">
+        <i class="fas fa-sign-in-alt"></i>
+        تسجيل الدخول
+      </button>
+      
+      <div class="forgot-password">
+        <a href="#">نسيت كلمة المرور؟</a>
+      </div>
+      
+      <div class="social-login">
+        <h3>أو تسجيل الدخول باستخدام</h3>
+        <div class="social-buttons">
+          <button>
+            <i class="fab fa-google"></i>
+            Google
+          </button>
+          <button>
+            <i class="fab fa-facebook"></i>
+            Facebook
+          </button>
+        </div>
+      </div>
+      
+      <div class="error-message" id="error-message">
+        <!-- سيتم عرض رسالة الخطأ هنا -->
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // التحقق من صحة تسجيل الدخول
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const errorMessage = document.getElementById('error-message');
+      
+      // التحقق من صحة البيانات
+      if (username.length < 3 || password.length < 6) {
+        errorMessage.textContent = 'اسم المستخدم يجب أن يكون 3 أحرف على الأقل وكلمة المرور 6 أحرف على الأقل';
+        errorMessage.classList.add('show');
+        return;
+      }
+      
+      // إخفاء رسالة الخطأ إذا كانت ظاهرة
+      errorMessage.classList.remove('show');
+      
+      // هنا يمكن إضافة كود تسجيل الدخول الفعلي
+      console.log('تسجيل دخول:', { username, password });
+    });
+  </script>
+</body>
+</html>
+<body>
+  <div class="login-box">
+    <h2>تسجيل الدخول</h2>
+    <input type="text" id="username" placeholder="اسم المستخدم" />
+    <input type="password" id="password" placeholder="كلمة المرور" />
+    <button onclick="login()">دخول</button>
+    <p class="error" id="errorMsg"></p>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      if (user === "admin" && pass === "1234") {
+        window.location.href = "dashboard.html";
+      } else {
+        errorMsg.textContent = "بيانات الدخول غير صحيحة!";
+      }
+    }
+  </script>
+</body>
+</html>

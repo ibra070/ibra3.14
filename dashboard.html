@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم البنكية</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      width: 90%;
+      margin: auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: center;
+    }
+    th {
+      background: #333;
+      color: white;
+    }
+    .actions button {
+      margin: 0 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+    .top-bar {
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .top-bar button {
+      padding: 10px 15px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>لوحة التحكم البنكية</h1>
+    <div class="top-bar">
+      <button onclick="exportToCSV()">⬇️ تصدير كـ CSV</button>
+      <label style="display:inline-block;">
+        ⬆️ استيراد
+        <input type="file" accept=".csv" onchange="importFromCSV(event)" style="display:none;">
+      </label>
+      <button onclick="addClient()">➕ إضافة عميل</button>
+      <button onclick="calculateTotal()">💰 إجمالي الأرصدة</button>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>رقم الحساب</th>
+          <th>الرقم السري</th>
+          <th>الاسم</th>
+          <th>الهاتف</th>
+          <th>الرصيد</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody id="clientTable"></tbody>
+    </table>
+  </div>
+
+  <script>
+    let clients = JSON.parse(localStorage.getItem("clients") || "[]");
+
+    function renderClients() {
+      const table = document.getElementById("clientTable");
+      table.innerHTML = "";
+      clients.forEach((c, i) => {
+        table.innerHTML += `
+          <tr>
+            <td>${c.account}</td>
+            <td>${c.pin}</td>
+            <td>${c.name}</td>
+            <td>${c.phone}</td>
+            <td>${c.balance.toFixed(2)}</td>
+            <td class="actions">
+              <button onclick="editClient(${i})">✏️ تعديل</button>
+              <button onclick="deleteClient(${i})">🗑️ حذف</button>
+              <button onclick="deposit(${i})">➕ إيداع</button>
+              <button onclick="withdraw(${i})">➖ سحب</button>
+            </td>
+          </tr>
+        `;
+      });
+    }
+
+    function save() {
+      localStorage.setItem("clients", JSON.stringify(clients));
+      renderClients();
+    }
+
+    function addClient() {
+      const account = prompt("رقم الحساب:");
+      if (clients.find(c => c.account === account)) return alert("رقم الحساب موجود مسبقاً!");
+      const pin = prompt("الرقم السري:");
+      const name = prompt("الاسم:");
+      const phone = prompt("الهاتف:");
+      const balance = parseFloat(prompt("الرصيد الابتدائي:"));
+      if (!account || !pin || !name || !phone || isNaN(balance)) return;
+      clients.push({ account, pin, name, phone, balance });
+      save();
+    }
+
+    function editClient(i) {
+      const c = clients[i];
+      c.pin = prompt("الرقم السري:", c.pin);
+      c.name = prompt("الاسم:", c.name);
+      c.phone = prompt("الهاتف:", c.phone);
+      c.balance = parseFloat(prompt("الرصيد:", c.balance));
+      if (isNaN(c.balance)) c.balance = 0;
+      save();
+    }
+
+    function deleteClient(i) {
+      if (confirm("هل أنت متأكد من حذف العميل؟")) {
+        clients.splice(i, 1);
+        save();
+      }
+    }
+
+    function deposit(i) {
+      const amount = parseFloat(prompt("المبلغ للإيداع:"));
+      if (!isNaN(amount) && amount > 0) {
+        clients[i].balance += amount;
+        save();
+      }
+    }
+
+    function withdraw(i) {
+      const amount = parseFloat(prompt("المبلغ للسحب:"));
+      if (!isNaN(amount) && amount > 0 && amount <= clients[i].balance) {
+        clients[i].balance -= amount;
+        save();
+      } else {
+        alert("رصيد غير كافٍ أو إدخال غير صالح");
+      }
+    }
+
+    function calculateTotal() {
+      const total = clients.reduce((sum, c) => sum + c.balance, 0);
+      alert(`إجمالي الأرصدة: ${total.toFixed(2)} ريال`);
+    }
+
+    renderClients();
+  </script>
+  <script src="export.js"></script>
+</body>
+</html>

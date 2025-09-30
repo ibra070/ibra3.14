@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنك التميز | الخدمات المصرفية الشاملة</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #f8f9fa;
+            --accent-color: #ffc107;
+            --text-color: #333;
+            --light-color: #fff;
+            --dark-color: #212529;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-right: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .auth-buttons a {
+            margin-right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .login {
+            color: var(--light-color);
+            border: 1px solid var(--light-color);
+        }
+        
+        .register {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 86, 179, 0.8), rgba(0, 86, 179, 0.8)), url('https://via.placeholder.com/1920x600') no-repeat center center/cover;
+            color: var(--light-color);
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #e0a800;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            background-color: var(--primary-color);
+            color: var(--light-color);
+            font-size: 2.5rem;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .service-content {
+            padding: 1.5rem;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #495057;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin: 1rem 0;
+                justify-content: center;
+            }
+            
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">بنك <span>التميز</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">الخدمات</a></li>
+                    <li><a href="#">الحسابات</a></li>
+                    <li><a href="#">القروض</a></li>
+                    <li><a href="#">الاستثمار</a></li>
+                    <li><a href="#">الأسعار والرسوم</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="login">تسجيل الدخول</a>
+                <a href="#" class="register">فتح حساب</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>بنك التميز - حلول مالية متكاملة</h1>
+            <p>نقدم لك مجموعة واسعة من الخدمات المصرفية عبر الإنترنت لتلبية جميع احتياجاتك المالية بسهولة وأمان.</p>
+            <a href="#" class="cta-button">ابدأ الآن</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">خدماتنا المصرفية</h2>
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>حسابات التوفير</h3>
+                        <p>اختر من بين مجموعة متنوعة من حسابات التوفير التي تناسب احتياجاتك مع عوائد تنافسية.</p>
+                        <a href="#">المزيد</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>القروض الشخصية</h3>
+                        <p>حلول تمويلية مرنة لتحقيق أحلامك وأهدافك بمعدلات فائدة تنافسية.</p>
+                        <a href="#">المزيد</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>البطاقات الائتمانية</h3>
+                        <p>اختر البطاقة التي تناسب أسلوب حياتك واستمتع بمزايا حصرية وعروض خاصة.</p>
+                        <a href="#">المزيد</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>الاستثمار</h3>
+                        <p>حلول استثمارية متنوعة تساعدك على تنمية ثروتك وتحقيق أهدافك المالية.</p>
+                        <a href="#">المزيد</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>التمويل العقاري</h3>
+                        <p>تمويل لشراء أو بناء منزل أحلامك بشروط ميسرة ودفعات مريحة.</p>
+                        <a href="#">المزيد</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>الخدمات الرقمية</h3>
+                        <p>إدارة أموالك بسهولة وأمان من خلال تطبيقنا الذكي والخدمات المصرفية عبر الإنترنت.</p>
+                        <a href="#">المزيد</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">لماذا تختار بنك التميز؟</h2>
+            <div class="features-grid">
+                <!-- Feature 1 -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>أمان عالي</h3>
+                    <p>نستخدم أحدث تقنيات التشفير لحماية معلوماتك ومعاملاتك المالية.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>خدمة 24/7</h3>
+                    <p>خدمة عملاء متاحة على مدار الساعة لمساعدتك في أي وقت.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>معاملات سريعة</h3>
+                    <p>إنجاز معاملاتك المالية بسرعة وكفاءة دون عناء.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>عروض حصرية</h3>
+                    <p>استفد من العروض والمكافآت الحصرية لعملائنا الكرام.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Column 1 -->
+                <div class="footer-column">
+                    <h3>عن البنك</h3>
+                    <ul>
+                        <li><a href="#">عن بنك التميز</a></li>
+                        <li><a href="#">الرؤية والرسالة</a></li>
+                        <li><a href="#">فريق الإدارة</a></li>
+                        <li><a href="#">الوظائف</a></li>
+                        <li><a href="#">الأخبار</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="footer-column">
+                    <h3>الخدمات</h3>
+                    <ul>
+                        <li><a href="#">الحسابات</a></li>
+                        <li><a href="#">القروض</a></li>
+                        <li><a href="#">البطاقات</a></li>
+                        <li><a href="#">الاستثمار</a></li>
+                        <li><a href="#">الخدمات الرقمية</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div class="footer-column">
+                    <h3>الدعم</h3>
+                    <ul>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                        <li><a href="#">الشكاوى والاقتراحات</a></li>
+                        <li><a href="#">دليل الفروع</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div class="footer-column">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> 920000000</li>
+                        <li><i class="fas fa-envelope"></i> info@tamayozbank.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                        <li>
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 بنك التميز. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>أهدافي المنجزة</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: 20px auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    input, select {
+      padding: 12px;
+      margin: 6px 0;
+      width: 100%;
+      box-sizing: border-box;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 16px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      width: 100%;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #addBtn {
+      background: linear-gradient(to right, #27ae60, #2ecc71);
+      color: white;
+    }
+
+    #addBtn:hover {
+      background: linear-gradient(to right, #219150, #28b564);
+    }
+
+    button.edit {
+      background-color: #ffffff;
+      color: #f39c12;
+      margin: 2px;
+      padding: 8px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      border: 1px solid #f39c12;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    button.edit::before {
+      content: "📝";
+      font-size: 14px;
+    }
+
+    button.edit:hover {
+      background-color: #fff8e1;
+      color: #f39c12;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    button.delete {
+      background-color: #ffffff;
+      color: #e74c3c;
+      margin: 2px;
+      padding: 8px;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      font-size: 16px;
+      border: 1px solid #e74c3c;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    button.delete::before {
+      content: "❌";
+      font-size: 14px;
+    }
+
+    button.delete:hover {
+      background-color: #fff8f0;
+      color: #e74c3c;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    button.edit:active,
+    button.delete:active {
+      transform: translateY(0);
+      box-shadow: none;
+    }
+
+    .table-container {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+      font-size: 15px;
+    }
+
+    th, td {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f0f0f0;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .number-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: #f39c12;
+      color: white;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 14px;
+      }
+
+      input, select, button {
+        font-size: 14px;
+      }
+
+      .action-buttons {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      button.edit, button.delete {
+        width: 100%;
+        font-size: 14px;
+        padding: 10px;
+      }
+
+      table {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎯 إضافة هدف منجز</h1>
+    <input type="text" id="goal" placeholder="أدخل الهدف المنجز" />
+    <input type="date" id="date" />
+    <button id="addBtn" onclick="addGoal()">✔️ أضف الهدف</button>
+
+    <h2>📜 قائمة الأهداف المنجزة</h2>
+    <select id="yearFilter" onchange="filterByYear()">
+      <option value="">كل السنوات</option>
+    </select>
+
+    <div class="table-container">
+      <table id="goalsTable">
+        <thead>
+          <tr>
+            <th>رقم</th>
+            <th>الهدف</th>
+            <th>التاريخ</th>
+            <th>السنة</th>
+            <th>الخيارات</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    let goals = JSON.parse(localStorage.getItem("goals") || "[]");
+    let editingIndex = -1;
+
+    function addGoal() {
+      const goalInput = document.getElementById("goal");
+      const dateInput = document.getElementById("date");
+      const goal = goalInput.value.trim();
+      const date = dateInput.value;
+
+      if (goal === "" || date === "") {
+        alert("الرجاء تعبئة الهدف والتاريخ");
+        return;
+      }
+
+      const year = new Date(date).getFullYear();
+
+      if (editingIndex === -1) {
+        goals.push({ goal, date, year });
+      } else {
+        goals[editingIndex] = { goal, date, year };
+        editingIndex = -1;
+        document.getElementById("addBtn").textContent = "✔️ أضف الهدف";
+      }
+
+      saveGoals();
+      renderGoals();
+      goalInput.value = "";
+      dateInput.value = "";
+    }
+
+    function editGoal(index) {
+      const g = goals[index];
+      document.getElementById("goal").value = g.goal;
+      document.getElementById("date").value = g.date;
+      editingIndex = index;
+      document.getElementById("addBtn").textContent = "💾 حفظ التعديل";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function deleteGoal(index) {
+      if (confirm("هل أنت متأكد من حذف هذا الهدف؟")) {
+        goals.splice(index, 1);
+        saveGoals();
+        renderGoals();
+      }
+    }
+
+    function saveGoals() {
+      localStorage.setItem("goals", JSON.stringify(goals));
+    }
+
+    function renderGoals() {
+      const tbody = document.querySelector("#goalsTable tbody");
+      tbody.innerHTML = "";
+      const yearFilter = document.getElementById("yearFilter").value;
+      let yearsSet = new Set();
+      
+      // Group goals by year
+      const goalsByYear = {};
+      goals.forEach(g => {
+        yearsSet.add(g.year);
+        if (!goalsByYear[g.year]) {
+          goalsByYear[g.year] = [];
+        }
+        goalsByYear[g.year].push(g);
+      });
+
+      // Sort years and their goals
+      const sortedYears = Array.from(yearsSet).sort();
+      sortedYears.forEach(year => {
+        const yearGoals = goalsByYear[year];
+        yearGoals.sort((a, b) => new Date(a.date) - new Date(b.date));
+
+        // Add year header
+        const yearHeader = document.createElement("tr");
+        yearHeader.innerHTML = `
+          <td colspan="5" style="background: #f8f9fa; font-weight: bold; text-align: center; padding: 10px;">
+            📅 ${year}
+          </td>
+        `;
+        tbody.appendChild(yearHeader);
+
+        // Add goals for this year
+        yearGoals.forEach((g, index) => {
+          if (yearFilter && g.year != yearFilter) return;
+
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><span class="number-badge">${index + 1}</span></td>
+            <td>${g.goal}</td>
+            <td>${g.date}</td>
+            <td>${g.year}</td>
+            <td>
+              <div class="action-buttons">
+                <button class="edit" onclick="editGoal(${goals.indexOf(g)})"></button>
+                <button class="delete" onclick="deleteGoal(${goals.indexOf(g)})"></button>
+              </div>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        });
+      });
+
+      // Update year filter options
+      const yearSelect = document.getElementById("yearFilter");
+      yearSelect.innerHTML = '<option value="">كل السنوات</option>';
+      sortedYears.forEach(y => {
+        const option = document.createElement("option");
+        option.value = y;
+        option.textContent = y;
+        yearSelect.appendChild(option);
+      });
+    }
+
+    function filterByYear() {
+      renderGoals();
+    }
+
+    renderGoals();
+  </script>
+</body>
+</html>

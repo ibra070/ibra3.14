@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مصطلحات الشبكات - Ibrahem Mok</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --background-color: #f8fafc;
+        }
+
+        body {
+            background-color: var(--background-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .terms-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+
+        .term-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .term-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .term-title {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .term-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-list {
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-list li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .benefits-list li:before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+        }
+
+        .additional-info {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .additional-info i {
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .info-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .info-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .info-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+        }
+
+        .back-link:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="terms-container">
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            العودة إلى الرئيسية
+        </a>
+
+        <h1 class="text-center mb-4">مصطلحات أساسية في الشبكات</h1>
+
+         <!-- DHCP -->
+         <div class="term-card">
+            <h2 class="term-title">DHCP</h2>
+            <p class="term-subtitle">(Dynamic Host Configuration Protocol)</p>
+            <p>بروتوكول تلقائي لتوزيع عناوين IP وتكوين إعدادات الشبكة على الأجهزة.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-network-wired info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">1. الطلب (Discover)<br>2. العرض (Offer)<br>3. الطلب (Request)<br>4. التأكيد (Acknowledge)</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-server info-icon"></i>
+                    <div class="info-title">الإعدادات الموزعة</div>
+                    <div class="info-description">عنوان IP<br>ماسك الشبكة<br>عنوان الراوتر<br>خوادم DNS</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-clock info-icon"></i>
+                    <div class="info-title">فترات التأجير</div>
+                    <div class="info-description">فترة تأجير قصيرة<br>فترة تأجير طويلة<br>تجديد التأجير<br>إعادة تعيين التأجير</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">الأمان</div>
+                    <div class="info-description">حماية من التهديدات<br>منع التلاعب بالعناوين<br>ضمان توزيع العناوين الفريد</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>فوائد DHCP:</p>
+                <ul class="benefits-list">
+                    <li>توفير الوقت في إدارة الشبكة</li>
+                    <li>منع تكرار العناوين</li>
+                    <li>سهولة إدارة إعدادات الشبكة</li>
+                    <li>دعم الأجهزة المتنقلة</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">استخدامات شائعة</div>
+                    <div class="info-description">الشبكات المحلية<br>الشبكات السحابية<br>الشبكات المتنقلة<br>الشبكات المؤسسية</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-exclamation-triangle info-icon"></i>
+                    <div class="info-title">ملاحظات مهمة</div>
+                    <div class="info-description">يحتاج إلى خادم DHCP<br>يحتاج إلى نطاق عناوين IP<br>يحتاج إلى إعدادات أمان<br>يحتاج إلى صيانة مستمرة</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>المنزل: توزيع عناوين IP للأجهزة تلقائياً</li>
+                    <li>المكتب: إدارة عناوين IP للموظفين</li>
+                    <li>المدرسة: توزيع عناوين IP لأجهزة الطلاب</li>
+                    <li>الشركة: إدارة الشبكة المؤسسية</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-question-circle info-icon"></i>
+                    <div class="info-title">الفرق بين DHCP و Static IP</div>
+                    <div class="info-description">DHCP: توزيع تلقائي<br>Static: تعيين يدوي<br>DHCP: يدعم التغيير<br>Static: ثابت</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <div class="info-title">نصائح مهمة</div>
+                    <div class="info-description">إعداد خادم DHCP بشكل صحيح<br>تحديد نطاق عناوين IP<br>ضمان أمان النظام<br>الحفاظ على سجلات التأجير</div>
+                </div>
+            </div>
+        </div>
+
+      <!-- NAT -->
+      <div class="term-card">
+        <h2 class="term-title">NAT</h2>
+        <p class="term-subtitle">(Network Address Translation)</p>
+        <p>تقنية تحويل عناوين IP، تسمح لأجهزة الشبكة المحلية باستخدام عنوان IP واحد للاتصال بالإنترنت.</p>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fas fa-exchange-alt info-icon"></i>
+                <div class="info-title">كيف يعمل</div>
+                <div class="info-description">1. تحويل عنوان IP المحلي إلى عنوان عام<br>2. حفظ جدول التحويل<br>3. إعادة تحويل العناوين عند الرد<br>4. توجيه البيانات إلى الجهاز الصحيح</div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-shield-alt info-icon"></i>
+                <div class="info-title">أنواع</div>
+                <div class="info-description">NAT عادي<br>NAT مع بروتوكول (PAT)<br>NAT ثابت (Static NAT)<br>NAT ديناميكي (Dynamic NAT)</div>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fas fa-network-wired info-icon"></i>
+                <div class="info-title">مميزات</div>
+                <div class="info-description">حفظ عناوين IP<br>تحسين أمان الشبكة<br>سهولة إدارة الشبكة<br>دعم الأجهزة المتعددة</div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-exclamation-triangle info-icon"></i>
+                <div class="info-title">عيوب</div>
+                <div class="info-description">قد يسبب تأخير<br>قد يمنع بعض التطبيقات<br>يحتاج إلى جهاز NAT<br>قد يسبب مشاكل في التطبيقات المباشرة</div>
+            </div>
+        </div>
+
+        <div class="additional-info">
+            <i class="fas fa-info-circle"></i>
+            <p>استخدامات شائعة:</p>
+            <ul class="benefits-list">
+                <li>الشبكات المحلية (LAN)</li>
+                <li>المدارس والجامعات</li>
+                <li>الشركات</li>
+                <li>المكاتب</li>
+            </ul>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fas fa-tools info-icon"></i>
+                <div class="info-title">كيفية إعداده</div>
+                <div class="info-description">1. تحديد عنوان IP العام<br>2. تحديد نطاق عناوين IP المحلية<br>3. تكوين جهاز NAT<br>4. اختبار الاتصال</div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-info-circle info-icon"></i>
+                <div class="info-title">نصائح مهمة</div>
+                <div class="info-description">تحديد عنوان IP ثابت للخادم<br>تحديث جهاز NAT بانتظام<br>ضمان أمان الشبكة<br>الحفاظ على سجلات التحويل</div>
+            </div>
+        </div>
+
+        <div class="additional-info">
+            <i class="fas fa-info-circle"></i>
+            <p>أمثلة عملية:</p>
+            <ul class="benefits-list">
+                <li>المنزل: توصيل عدة أجهزة بالإنترنت باستخدام عنوان واحد</li>
+                <li>المكتب: حماية أجهزة الموظفين من الإنترنت</li>
+                <li>المدرسة: إدارة اتصالات الطلاب بالإنترنت</li>
+                <li>الشركة: حماية الشبكة المؤسسية</li>
+            </ul>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fas fa-question-circle info-icon"></i>
+                <div class="info-title">الفرق بين NAT و PAT</div>
+                <div class="info-description">NAT: تحويل عناوين IP فقط<br>PAT: تحويل عناوين IP والمنافذ<br>NAT: لكل جهاز عنوان خاص<br>PAT: استخدام منفذ مختلف لكل جهاز</div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-info-circle info-icon"></i>
+                <div class="info-title">نصائح مهمة</div>
+                <div class="info-description">تحديد نطاق عناوين IP<br>إعداد جهاز NAT بشكل صحيح<br>ضمان أمان الشبكة<br>الحفاظ على سجلات التحويل</div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ISP -->
+        <div class="term-card">
+            <h2 class="term-title">3. ISP</h2>
+            <p class="term-subtitle">(Internet Service Provider)</p>
+            <p>مزود خدمة الإنترنت، مثل:</p>
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-wifi info-icon"></i>
+                    <div class="info-title">عدن نت</div>
+                    <div class="info-description">خدمة إنترنت سلكية وواي فاي</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-mobile-alt info-icon"></i>
+                    <div class="info-title">يمن موبايل</div>
+                    <div class="info-description">خدمة إنترنت موبايل</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tv info-icon"></i>
+                    <div class="info-title">STC</div>
+                    <div class="info-description">خدمة إنترنت سلكية وموبايل</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-satellite-dish info-icon"></i>
+                    <div class="info-title">سبأفون</div>
+                    <div class="info-description">خدمة إنترنت موبايل</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tower-broadcast info-icon"></i>
+                    <div class="info-title">MTN</div>
+                    <div class="info-description">خدمة إنترنت موبايل</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-wifi info-icon"></i>
+                    <div class="info-title">Wi-tribe</div>
+                    <div class="info-description">خدمة إنترنت واي فاي</div>
+                </div>
+            </div>
+
+            <h3>خدمات ISP:</h3>
+            <ul class="benefits-list">
+                <li>تقديم عناوين IP</li>
+                <li>خدمة DNS</li>
+                <li>دعم فني</li>
+                <li>حماية من الهجمات</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>نصائح عند اختيار ISP:</p>
+                <ul class="benefits-list">
+                    <li>جودة الخدمة</li>
+                    <li>سرعة الاتصال</li>
+                    <li>سعر الخدمة</li>
+                    <li>جودة الدعم الفني</li>
+                </ul>
+            </div>
+        </div>
+
+       
+
+       
+
+        <!-- MAC Address -->
+        <div class="term-card">
+            <h2 class="term-title">MAC Address</h2>
+            <p class="term-subtitle">(Media Access Control Address)</p>
+            <p>عنوان فريد لكل جهاز شبكة في العالم، يتكون من 6 أزواج من الأرقام والأحرف.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-network-wired info-icon"></i>
+                    <div class="info-title">كيفية العمل</div>
+                    <div class="info-description">يستخدم في توجيه البيانات<br>يتم تعيينه من قبل الشركة المصنعة<br>لا يمكن تغييره</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-id-card info-icon"></i>
+                    <div class="info-title">الهيكل</div>
+                    <div class="info-description">6 أزواج من الأرقام والأحرف<br>يتم فصلها بـ ':' أو '-'<br>مثال: 00:1A:2B:3C:4D:5E</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-wifi info-icon"></i>
+                    <div class="info-title">أنواع</div>
+                    <div class="info-description">MAC للشبكة المحلية<br>MAC للواي فاي<br>MAC للبلوتوث<br>MAC للشبكات السلكية</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">الأمان</div>
+                    <div class="info-description">استخدامه في التحقق من الهوية<br>منع الاتصالات غير المصرح بها<br>حماية الشبكة</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>كيفية العثور على MAC Address:</p>
+                <ul class="benefits-list">
+                    <li>في Windows: الأمر ipconfig /all</li>
+                    <li>في Linux: الأمر ifconfig</li>
+                    <li>في Mac: الإعدادات > الشبكة</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">استخدامات شائعة</div>
+                    <div class="info-description">تحديد أجهزة الشبكة<br>التحكم في الوصول<br>التحقق من الهوية<br>الشبكات المحلية</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-exclamation-triangle info-icon"></i>
+                    <div class="info-title">ملاحظات مهمة</div>
+                    <div class="info-description">لا يمكن تغيير MAC Address<br>لا يمكن تكرار MAC Address<br>يستخدم في توجيه البيانات<br>يتم تعيينه من الشركة المصنعة</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>الشبكات المحلية: تحديد الأجهزة المتصلة</li>
+                    <li>الواي فاي: التحقق من هوية المستخدمين</li>
+                    <li>الشركات: التحكم في الوصول إلى الشبكة</li>
+                    <li>المدارس: إدارة أجهزة الطلاب</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-question-circle info-icon"></i>
+                    <div class="info-title">الفرق بين MAC و IP</div>
+                    <div class="info-description">MAC: عنوان جسدي<br>IP: عنوان منطقي<br>MAC: لا يمكن تغييره<br>IP: يمكن تغييره</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <div class="info-title">نصائح مهمة</div>
+                    <div class="info-description">حفظ MAC Addresses للأجهزة<br>تحديث قوائم MAC Addresses<br>استخدامها في التحقق من الهوية<br>حماية الشبكة من الاتصالات غير المصرح بها</div>
+                </div>
+            </div>
+        </div>
+
+
+      
+
+        <!-- DNS -->
+        <div class="term-card">
+            <h2 class="term-title">DNS</h2>
+            <p class="term-subtitle">(Domain Name Server)</p>
+            <p>نظام يحوّل أسماء المواقع إلى عناوين IP رقمية، مثل تحويل www.google.com إلى 172.217.16.174.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-server info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">1. المتصفح يطلب عنوان IP من DNS<br>2. DNS يبحث في قاعدة البيانات<br>3. يرسل عنوان IP للمتصفح</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-clock info-icon"></i>
+                    <div class="info-title">وقت الاستجابة</div>
+                    <div class="info-description">عادة ما يستغرق بضع ملي ثواني<br>يمكن أن يطول في حالات التأخير<br>يؤثر على سرعة تحميل المواقع</div>
+                </div>
+            </div>
+
+            <h3>أنواع DNS:</h3>
+            <ul class="benefits-list">
+                <li>الخوادم الجذرية (Root DNS): 13 خادمًا فقط في العالم</li>
+                <li>الخوادم الرئيسية (TLD DNS): مثل .com و .org و .edu</li>
+                <li>الخوادم الثانوية (Authoritative DNS): تدير المواقع المحددة</li>
+                <li>خوادم DNS محلية: في الشركات والمؤسسات</li>
+                <li>خوادم DNS عامة: مثل Google DNS (8.8.8.8) و Cloudflare DNS (1.1.1.1)</li>
+            </ul>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-database info-icon"></i>
+                    <div class="info-title">أنواع السجلات DNS</div>
+                    <div class="info-description">A (Address): يربط اسم النطاق بعنوان IP<br>CNAME: يربط نطاق بآخر<br>MX: لخدمة البريد الإلكتروني<br>TXT: لسجلات التحقق<br>NS: يحدد خوادم DNS المسؤولة</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">الأمان في DNS</div>
+                    <div class="info-description">DNSSEC: يضمن صحة المعلومات<br>DNS over HTTPS: يحمي الخصوصية<br>DNS over TLS: يمنع التنصت<br>تحديثات مستمرة للأمان</div>
+                </div>
+            </div>
+
+            <h3>مميزات DNS:</h3>
+            <ul class="benefits-list">
+                <li>سهولة تذكر المواقع بدلاً من الأرقام</li>
+                <li>تحسين أداء التصفح عبر الذاكرة المؤقتة</li>
+                <li>تنظيم المواقع وخدماتها</li>
+                <li>دعم الخدمات الأخرى مثل البريد الإلكتروني</li>
+                <li>تحديثات سريعة للخدمات</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>نصائح مهمة:</p>
+                <ul class="benefits-list">
+                    <li>استخدام خوادم DNS موثوقة</li>
+                    <li>تحديث إعدادات DNS بانتظام</li>
+                    <li>استخدام DNSSEC للحماية</li>
+                    <li>تفحص اعدادات DNS في حالة بطء التصفح</li>
+                    <li>استخدام خدمات DNS متعددة للنسخ الاحتياطي</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-wifi info-icon"></i>
+                    <div class="info-title">مشاكل شائعة</div>
+                    <div class="info-description">تأخير في تحميل المواقع<br>مشكلات في التصفح<br>أخطاء في تحميل الموارد<br>مشاكل في البريد الإلكتروني</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">حلول المشاكل</div>
+                    <div class="info-description">مسح ذاكرة DNS المؤقتة<br>تغيير خوادم DNS<br>تحديث إعدادات الأمان<br>استخدام خدمات DNS بديلة</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>تغيير خوادم DNS للحصول على سرعة تصفح أفضل</li>
+                    <li>استخدام DNS لمنع المواقع غير المرغوب فيها</li>
+                    <li>تحسين أداء البريد الإلكتروني باستخدام MX records</li>
+                    <li>حماية الخصوصية باستخدام DNS over HTTPS</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- URL -->
+        <div class="term-card">
+            <h2 class="term-title">URL</h2>
+            <p class="term-subtitle">(Uniform Resource Locator)</p>
+            <p>عنوان موحد للموارد على الإنترنت.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-link info-icon"></i>
+                    <div class="info-title">أجزاء URL</div>
+                    <div class="info-description">بروتوكول (http://)<br>اسم النطاق (example.com)<br>المسار (/path/to/page)<br>المعلمات (?param=value)</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-hashtag info-icon"></i>
+                    <div class="info-title">أنواع البروتوكولات</div>
+                    <div class="info-description">http<br>https<br>ftp<br>mailto<br>tel</div>
+                </div>
+            </div>
+
+            <h3>مميزات URL:</h3>
+            <ul class="benefits-list">
+                <li>تحديد موقع المورد بدقة</li>
+                <li>سهولة الوصول للموارد</li>
+                <li>تنظيم المحتوى</li>
+                <li>تحسين محركات البحث</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>نصائح عند كتابة URL:</p>
+                <ul class="benefits-list">
+                    <li>استخدم كلمات مفتاحية واضحة</li>
+                    <li>تجنب الأحرف الخاصة</li>
+                    <li>حافظ على البساطة والوضوح</li>
+                    <li>استخدم خطوط URL قصيرة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FTP -->
+        <div class="term-card">
+            <h2 class="term-title">FTP</h2>
+            <p class="term-subtitle">(File Transfer Protocol)</p>
+            <p>بروتوكول نقل الملفات عبر الإنترنت.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-file-upload info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">1. الاتصال بالخادم<br>2. تسجيل الدخول<br>3. نقل الملفات<br>4. الاتصال بالخادم</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">الأمان</div>
+                    <div class="info-description">FTP غير مشفر<br>يستخدم FTPS أو SFTP<br>يحتاج اسم مستخدم وكلمة مرور</div>
+                </div>
+            </div>
+
+            <h3>مميزات FTP:</h3>
+            <ul class="benefits-list">
+                <li>نقل الملفات الكبيرة</li>
+                <li>دعم أنواع مختلفة من الملفات</li>
+                <li>إمكانية نقل عدة ملفات</li>
+                <li>دعم التحميل من حيث التوقف</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>برامج FTP الشائعة:</p>
+                <ul class="benefits-list">
+                    <li>FileZilla</li>
+                    <li>WinSCP</li>
+                    <li>FTP Rush</li>
+                    <li>CuteFTP</li>
+                </ul>
+            </div>
+        </div>
+
+      
+
+      
+        <!-- Modem -->
+        <div class="term-card">
+            <h2 class="term-title">Modem</h2>
+            <p class="term-subtitle">(Modulator-Demodulator)</p>
+            <p>جهاز يستقبل الإنترنت من مزود الخدمة (ISP) وتحويل الإشارات من نوع إلى آخر.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-signal info-icon"></i>
+                    <div class="info-title">وظائفه الأساسية</div>
+                    <div class="info-description">تحويل الإشارات الرقمية إلى موجات كهربائية<br>ربط مع مزود الخدمة<br>تقديم خدمة الإنترنت للشبكة</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-rss info-icon"></i>
+                    <div class="info-title">أنواع Modem</div>
+                    <div class="info-description">ADSL Modem<br>Fiber Modem<br>Cable Modem</div>
+                </div>
+            </div>
+
+            <h3>مميزات Modem:</h3>
+            <ul class="benefits-list">
+                <li>توفير اتصال مستقر بالإنترنت</li>
+                <li>دعم سرعات مختلفة</li>
+                <li>توافق مع أنواع مختلفة من الخطوط</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>مثال عملي:</p>
+                <ul class="benefits-list">
+                    <li>استقبال الإنترنت من شركة الاتصالات</li>
+                    <li>تحويل الإشارات من خط الهاتف إلى بيانات رقمية</li>
+                    <li>نقل البيانات إلى الراوتر</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Router -->
+        <div class="term-card">
+            <h2 class="term-title">Router</h2>
+            <p class="term-subtitle">(Router)</p>
+            <p>جهاز يربط عدة أجهزة داخل الشبكة ويدير حركة البيانات بينها.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-network-wired info-icon"></i>
+                    <div class="info-title">وظائفه الأساسية</div>
+                    <div class="info-description">إدارة حركة البيانات داخل الشبكة<br>تخصيص عناوين IP<br>توفير خدمة الواي فاي</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">الأمان</div>
+                    <div class="info-description">حماية الشبكة الداخلية<br>تصفية البيانات<br>منع الاتصالات غير المصرح بها</div>
+                </div>
+            </div>
+
+            <h3>مميزات Router:</h3>
+            <ul class="benefits-list">
+                <li>ربط عدة أجهزة</li>
+                <li>إدارة حركة البيانات</li>
+                <li>تحسين أمان الشبكة</li>
+                <li>دعم تقنيات متقدمة</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>مثال عملي:</p>
+                <ul class="benefits-list">
+                    <li>ربط جهاز الكمبيوتر والهاتف والطابعة</li>
+                    <li>تخصيص عناوين IP لكل جهاز</li>
+                    <li>إدارة الأولويات في نقل البيانات</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Gateway -->
+        <div class="term-card">
+            <h2 class="term-title">Gateway</h2>
+            <p class="term-subtitle">(Gateway)</p>
+            <p>جهاز يجمع بين وظائف Modem و Router في جهاز واحد.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-globe info-icon"></i>
+                    <div class="info-title">وظائفه المتكاملة</div>
+                    <div class="info-description">استقبال الإنترنت<br>إدارة الشبكة الداخلية<br>تقديم خدمة الواي فاي</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">مميزات التكامل</div>
+                    <div class="info-description">توفير مساحة<br>سهولة التركيب<br>توفير الطاقة</div>
+                </div>
+            </div>
+
+            <h3>مميزات Gateway:</h3>
+            <ul class="benefits-list">
+                <li>جهاز واحد يجمع عدة وظائف</li>
+                <li>سهولة الاستخدام والصيانة</li>
+                <li>توفير تكلفة</li>
+                <li>تحسين التنسيق بين الوظائف</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>مثال عملي:</p>
+                <ul class="benefits-list">
+                    <li>جهاز يجمع بين Modem و Router</li>
+                    <li>إدارة كاملة للشبكة من مكان واحد</li>
+                    <li>توفير حلول متكاملة للمنازل والشركات الصغيرة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Mesh Network -->
+        <div class="term-card">
+            <h2 class="term-title">Mesh Network</h2>
+            <p class="term-subtitle">(شبكة الماش)</p>
+            <p>نظام متقدم لتوزيع الواي فاي في كل أنحاء المكان.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-wifi info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">النقطة الرئيسية تربط مع الإنترنت<br>النقط الثانوية توزع الإشارة<br>تتعاون النقط مع بعضها</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-expand-arrows-alt info-icon"></i>
+                    <div class="info-title">مميزات التغطية</div>
+                    <div class="info-description">تغطية متكاملة<br>أداء أفضل<br>تقليل المناطق الميتة</div>
+                </div>
+            </div>
+
+            <h3>مميزات Mesh Network:</h3>
+            <ul class="benefits-list">
+                <li>تغطية متكاملة للمنزل</li>
+                <li>أداء أفضل من الراوتر التقليدي</li>
+                <li>سهولة التوسيع</li>
+                <li>تقليل التداخل</li>
+            </ul>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>المنازل الكبيرة: تغطية كل الغرف</li>
+                    <li>المباني المتعددة الطوابق: توزيع الإشارة بين الطوابق</li>
+                    <li>الشركات: تغطية مكاتب وقاعات اجتماعات</li>
+                    <li>المنازل التي تحتوي على جدران سميكة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SSL و TLS -->
+        <div class="term-card">
+            <h2 class="term-title">SSL و TLS</h2>
+            <p class="term-subtitle">(Secure Sockets Layer و Transport Layer Security)</p>
+            <p>بروتوكولات تشفير لحماية البيانات أثناء نقلها عبر الإنترنت.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-lock info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">1. تبادل المفاتيح<br>2. التحقق من الهوية<br>3. تشفير البيانات<br>4. تأكيد سلامة البيانات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">المميزات</div>
+                    <div class="info-description">حماية البيانات<br>ضمان الخصوصية<br>تحقق من الهوية<br>منع التلاعب بالبيانات</div>
+                </div>
+            </div>
+
+            <h3>الفرق بين SSL و TLS:</h3>
+            <ul class="benefits-list">
+                <li>SSL: النسخة الأقدم والأخف أماناً</li>
+                <li>TLS: النسخة الأحدث والأكثر أماناً</li>
+                <li>TLS يستخدم خوارزميات تشفير أكثر تقدماً</li>
+                <li>TLS يوفر حماية أفضل ضد الهجمات</li>
+            </ul>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-certificate info-icon"></i>
+                    <div class="info-title">أنواع شهادات SSL/TLS</div>
+                    <div class="info-description">DV: التحقق من الملكية<br>OV: التحقق من الهوية<br>EV: التحقق الممتد<br>WildCard: لعدة نطاقات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-wifi info-icon"></i>
+                    <div class="info-title">استخدامات شائعة</div>
+                    <div class="info-description">المواقع الإلكترونية<br>البريد الإلكتروني<br>الاتصالات الفورية<br>الخدمات المصرفية</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>المواقع المصرفية: تستخدم TLS لحماية المعاملات المالية</li>
+                    <li>خدمات البريد الإلكتروني: تستخدم SSL لحماية الرسائل</li>
+                    <li>المواقع الإلكترونية: تستخدم HTTPS (HTTP + SSL/TLS)</li>
+                    <li>تطبيقات المحادثة: تستخدم SSL لحماية المحادثات</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">كيفية تفعيل SSL/TLS</div>
+                    <div class="info-description">1. الحصول على شهادة SSL/TLS<br>2. تثبيت الشهادة على الخادم<br>3. تكوين الخادم<br>4. اختبار الاتصال المشفر</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">مميزات تفعيل SSL/TLS</div>
+                    <div class="info-description">حماية البيانات<br>بناء الثقة مع المستخدمين<br>تحسين ترتيب محركات البحث<br>منع التنصت على البيانات</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>نصائح مهمة:</p>
+                <ul class="benefits-list">
+                    <li>استخدام شهادات SSL/TLS معتمدة</li>
+                    <li>تحديث الشهادات بانتظام</li>
+                    <li>استخدام أحدث إصدار من TLS</li>
+                    <li>تفحص شهادات المواقع قبل تسجيل الدخول</li>
+                    <li>تجنب المواقع التي لا تستخدم HTTPS</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-bullseye info-icon"></i>
+                    <div class="info-title">علامات الأمان</div>
+                    <div class="info-description">قفل في شريط العنوان<br>https:// في بداية العنوان<br>شهادة سارية المفعول<br>لا توجد تحذيرات أمان</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-exclamation-triangle info-icon"></i>
+                    <div class="info-title">علامات الخطر</div>
+                    <div class="info-description">http:// فقط<br>شهادة منتهية الصلاحية<br>شهادة غير معتمدة<br>تحذيرات أمان في المتصفح</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API -->
+        <div class="term-card">
+            <h2 class="term-title">API</h2>
+            <p class="term-subtitle">(Application Programming Interface)</p>
+            <p>مجموعة من القواعد والبروتوكولات التي تسمح للتطبيقات بالتواصل مع بعضها البعض وتبادل البيانات.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-code info-icon"></i>
+                    <div class="info-title">أنواع API</div>
+                    <div class="info-description">REST API: بروتوكول بسيط يستخدم HTTP<br>SOAP API: بروتوكول معقد يستخدم XML<br>GraphQL API: يسمح بطلب البيانات المحددة فقط<br>Webhook API: يرسل البيانات تلقائياً عند حدوث حدث</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">الأمان في API</div>
+                    <div class="info-description">API Keys: مفاتيح سرية للتحقق من الهوية<br>OAuth: نظام تفويض الوصول<br>SSL/TLS: تشفير البيانات<br>Rate Limiting: تحديد معدل الطلبات</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-server info-icon"></i>
+                    <div class="info-title">كيفية عمل API</div>
+                    <div class="info-description">1. إرسال طلب إلى خادم API<br>2. معالجة الطلب على الخادم<br>3. إرجاع البيانات المطلوبة<br>4. معالجة البيانات في التطبيق</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-code-branch info-icon"></i>
+                    <div class="info-title">مكونات الطلب</div>
+                    <div class="info-description">Endpoint: عنوان API<br>Method: نوع الطلب (GET, POST, PUT, DELETE)<br>Headers: معلومات إضافية<br>Body: البيانات المرسلة</div>
+                </div>
+            </div>
+
+            <h3>فوائد API:</h3>
+            <ul class="benefits-list">
+                <li>تسهيل تكامل التطبيقات مع بعضها</li>
+                <li>تحسين الأداء وتخفيض تكلفة التطوير</li>
+                <li>توفير الوقت في إنشاء ميزات جديدة</li>
+                <li>زيادة المرونة في التعامل مع البيانات</li>
+                <li>دعم تطوير تطبيقات متنقلة وويب</li>
+            </ul>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-file-code info-icon"></i>
+                    <div class="info-title">أمثلة على استخدامات API</div>
+                    <div class="info-description">API للطقس<br>API للخرائط<br>API للدفع الإلكتروني<br>API للترجمة<br>API للتحليلات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">أدوات تطوير API</div>
+                    <div class="info-description">Postman: اختبار APIs<br>Swagger: وثائق APIs<br>API Management: إدارة APIs<br>API Gateway: توجيه الطلب</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>تطبيق الطقس يستخدم API للحصول على بيانات الطقس</li>
+                    <li>تطبيق التسوق يستخدم API للدفع الإلكتروني</li>
+                    <li>تطبيق الخرائط يستخدم API للحصول على معلومات المواقع</li>
+                    <li>تطبيق الترجمة يستخدم API للترجمة الفورية</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-bullseye info-icon"></i>
+                    <div class="info-title">أمثلة على APIs المشهورة</div>
+                    <div class="info-description">Twitter API<br>Google Maps API<br>Facebook API<br>Spotify API<br>Stripe API</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-book info-icon"></i>
+                    <div class="info-title">نصائح لتطوير API</div>
+                    <div class="info-description">توثيق جيد<br>اختبار شامل<br>أمان قوي<br>دعم مستمر<br>تحديثات منتظمة</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>تحديات تطوير API:</p>
+                <ul class="benefits-list">
+                    <li>ضمان الأمان</li>
+                    <li>تحسين الأداء</li>
+                    <li>إدارة التوافق مع الإصدارات</li>
+                    <li>ضمان استقرار الخدمة</li>
+                    <li>إدارة الموارد</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- IPv4 و IPv6 -->
+        <div class="term-card">
+            <h2 class="term-title">IPv4 و IPv6</h2>
+            <p class="term-subtitle">(Internet Protocol version 4 و version 6)</p>
+            <p>بروتوكولات لتحديد عناوين الأجهزة على الإنترنت.</p>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-globe info-icon"></i>
+                    <div class="info-title">IPv4</div>
+                    <div class="info-description">4.3 مليار عنوان (32 بت) - تنظيم العناوين في 4 أرقام من 0-255 مثل: 192.168.1.1</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-globe-americas info-icon"></i>
+                    <div class="info-title">IPv6</div>
+                    <div class="info-description">3.4×10^38 عنوان (128 بت) - تنظيم أكثر كفاءة ودعم للشبكات الكبيرة مثل: 2001:0db8:85a3:0000:0000:8a2e:0370:7334</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>IPv6 تم تطويره لحل مشكلة نفاد عناوين IPv4، وهو يوفر:</p>
+                <ul class="benefits-list">
+                    <li>دعم أفضل للشبكات الكبيرة</li>
+                    <li>تحسين الأمان</li>
+                    <li>تبسيط إدارة الشبكات</li>
+                </ul>
+            </div>
+        </div>
+
+      
+        <!-- HTTP و HTTPS -->
+        <div class="term-card">
+            <h2 class="term-title">HTTP و HTTPS</h2>
+            <p class="term-subtitle">(HyperText Transfer Protocol و Secure HyperText Transfer Protocol)</p>
+            <p>بروتوكولات لنقل البيانات على الإنترنت.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-globe info-icon"></i>
+                    <div class="info-title">HTTP</div>
+                    <div class="info-description">نقل البيانات بدون تشفير<br>استخدام المنفذ 80<br>لا يوفر حماية للبيانات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-lock info-icon"></i>
+                    <div class="info-title">HTTPS</div>
+                    <div class="info-description">HTTP + SSL/TLS<br>استخدام المنفذ 443<br>حماية البيانات من التنصت</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-code-branch info-icon"></i>
+                    <div class="info-title">أنواع الطلبات</div>
+                    <div class="info-description">GET: طلب بيانات<br>POST: إرسال بيانات<br>PUT: تحديث بيانات<br>DELETE: حذف بيانات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-code info-icon"></i>
+                    <div class="info-title">أمثلة على رموز الحالة</div>
+                    <div class="info-description">200: نجاح<br>404: صفحة غير موجودة<br>500: خطأ في الخادم<br>301: تم النقل بشكل دائم</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>الفرق بينهما:</p>
+                <ul class="benefits-list">
+                    <li>HTTP: نقل البيانات بدون تشفير</li>
+                    <li>HTTPS: نقل البيانات المشفرة</li>
+                    <li>HTTPS: يستخدم شهادات SSL/TLS</li>
+                    <li>HTTPS: أكثر أماناً</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">مميزات HTTPS</div>
+                    <div class="info-description">حماية البيانات<br>بناء الثقة مع المستخدمين<br>تحسين ترتيب محركات البحث<br>منع التنصت على البيانات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-exclamation-triangle info-icon"></i>
+                    <div class="info-title">مميزات HTTP</div>
+                    <div class="info-description">سرعة أكبر<br>استهلاك أقل للموارد<br>مناسب للمواقع البسيطة<br>لا يحتاج إلى شهادات</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>المواقع المصرفية: تستخدم HTTPS لحماية المعاملات المالية</li>
+                    <li>خدمات البريد الإلكتروني: تستخدم HTTPS لحماية الرسائل</li>
+                    <li>المواقع الإلكترونية: تستخدم HTTPS لبناء الثقة مع المستخدمين</li>
+                    <li>المواقع الحكومية: تستخدم HTTPS لحماية البيانات الحساسة</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">كيفية تكوين HTTPS</div>
+                    <div class="info-description">1. الحصول على شهادة SSL/TLS<br>2. تثبيت الشهادة على الخادم<br>3. تكوين الخادم<br>4. اختبار الاتصال المشفر</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <div class="info-title">نصائح مهمة</div>
+                    <div class="info-description">استخدام HTTPS للمواقع التي تتعامل مع بيانات حساسة<br>التحقق من شهادات المواقع قبل تسجيل الدخول<br>تجنب المواقع التي تستخدم HTTP فقط<br>تحديث شهادات SSL/TLS بانتظام</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-bullseye info-icon"></i>
+                    <div class="info-title">علامات الأمان</div>
+                    <div class="info-description">قفل في شريط العنوان<br>https:// في بداية العنوان<br>شهادة سارية المفعول<br>لا توجد تحذيرات أمان</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-exclamation-triangle info-icon"></i>
+                    <div class="info-title">علامات الخطر</div>
+                    <div class="info-description">http:// فقط<br>شهادة منتهية الصلاحية<br>شهادة غير معتمدة<br>تحذيرات أمان في المتصفح</div>
+                </div>
+            </div>
+        </div>
+
+       
+        <!-- VLAN -->
+        <div class="term-card">
+            <h2 class="term-title">VLAN</h2>
+            <p class="term-subtitle">(Virtual Local Area Network)</p>
+            <p>شبكة محلية افتراضية تسمح بفصل الشبكات المنطقية داخل نفس الشبكة الفيزيائية.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-network-wired info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">يستخدم أرقام VLAN (من 1 إلى 4094) لفصل الشبكات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">الفوائد</div>
+                    <div class="info-description">تحسين الأمان وتنظيم الشبكة وتحسين الأداء</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>مثال عملي:</p>
+                <ul class="benefits-list">
+                    <li>فصل شبكة الموظفين عن شبكة العملاء</li>
+                    <li>فصل الشبكات حسب الأقسام في الشركة</li>
+                    <li>تحسين أمان البيانات الحساسة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ARP -->
+        <div class="term-card">
+            <h2 class="term-title">ARP</h2>
+            <p class="term-subtitle">(Address Resolution Protocol)</p>
+            <p>بروتوكول يربط بين عنوان IP وعنوان MAC.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-exchange-alt info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">يقوم الراوتر بطلب عنوان MAC للجهاز المطلوب</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-database info-icon"></i>
+                    <div class="info-title">جدول ARP</div>
+                    <div class="info-description">يحتفظ الراوتر بجدول يربط بين العناوين IP و MAC</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أهمية ARP:</p>
+                <ul class="benefits-list">
+                    <li>يسمح للأجهزة بالاتصال المباشر مع بعضها</li>
+                    <li>يحسن أداء الشبكة</li>
+                    <li>يمنع الحاجة لاستخدام الراوتر في كل عملية اتصال</li>
+                </ul>
+            </div>
+        </div>
+
+      
+
+       
+
+         <!-- 3-Tier Architecture -->
+         <div class="term-card">
+            <h2 class="term-title">3-Tier Architecture</h2>
+            <p class="term-subtitle">(هندسة ثلاثية الطبقات)</p>
+            <p>هي نموذج تصميم يقسم تطبيق الحاسوب إلى ثلاث طبقات منفصلة:</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-desktop info-icon"></i>
+                    <div class="info-title">الطبقة العرضية (Presentation Layer)</div>
+                    <div class="info-description">واجهة المستخدم<br>واجهات الويب<br>تطبيقات الهاتف<br>واجهات المستخدم الرسومية</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-server info-icon"></i>
+                    <div class="info-title">طبقة التطبيق (Application Layer)</div>
+                    <div class="info-description">معالجة البيانات<br>قواعد الأعمال<br>خدمات API<br>منطق الأعمال</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-database info-icon"></i>
+                    <div class="info-title">طبقة البيانات (Data Layer)</div>
+                    <div class="info-description">قواعد البيانات<br>تخزين الملفات<br>خدمات التخزين السحابي<br>قواعد البيانات الموزعة</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-code-branch info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">1. المستخدم يتفاعل مع الواجهة<br>2. طبقة العرض ترسل الطلبات إلى طبقة التطبيق<br>3. طبقة التطبيق تتعامل مع قاعدة البيانات<br>4. النتائج تعود بالعكس</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">مميزات التقسيم</div>
+                    <div class="info-description">فصل المهام<br>سهولة الصيانة<br>تحسين الأداء<br>سهولة التحديث</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>مميزات 3-Tier Architecture:</p>
+                <ul class="benefits-list">
+                    <li>فصل المهام والمسؤوليات</li>
+                    <li>سهولة صيانة وتحديث كل طبقة منفصلة</li>
+                    <li>تحسين أداء التطبيق</li>
+                    <li>سهولة التوسع والتطوير</li>
+                    <li>تحسين أمن التطبيق</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-file-code info-icon"></i>
+                    <div class="info-title">أمثلة على التطبيقات</div>
+                    <div class="info-description">تطبيقات الويب الحديثة<br>تطبيقات الموبايل<br>نظام إدارة الموارد البشرية<br>نظام إدارة المبيعات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-bullseye info-icon"></i>
+                    <div class="info-title">مميزات التطبيقات</div>
+                    <div class="info-description">واجهات مستخدم سهلة الاستخدام<br>معالجة بيانات فعالة<br>تخزين آمن<br>سهولة التحديث والصيانة</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>نظام إدارة المبيعات: واجهة للمبيعين، خادم للمعالجة، قاعدة بيانات للتخزين</li>
+                    <li>تطبيق الموبايل: واجهة للهاتف، خادم للخدمات، قاعدة بيانات للبيانات</li>
+                    <li>نظام إدارة الموارد البشرية: واجهة للموظفين، خادم للمعالجة، قاعدة بيانات للبيانات</li>
+                    <li>نظام إدارة المخزون: واجهة للمستخدمين، خادم للمعالجة، قاعدة بيانات للتخزين</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">كيفية تطبيقها</div>
+                    <div class="info-description">1. تصميم كل طبقة منفصلة<br>2. تحديد واجهات الاتصال<br>3. تطوير كل طبقة<br>4. اختبار الاتصال بين الطبقات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <div class="info-title">نصائح مهمة</div>
+                    <div class="info-description">فصل المهام بوضوح<br>تحديد واجهات الاتصال<br>تحسين أداء كل طبقة<br>ضمان أمن البيانات</div>
+                </div>
+            </div>
+        </div>
+
+
+       
+        <!-- Business Intelligence (BI) -->
+        <div class="term-card">
+            <h2 class="term-title">Business Intelligence (BI)</h2>
+            <p class="term-subtitle">(الذكاء التجاري)</p>
+            <p>مجموعة من التقنيات والعمليات التي تستخدم لتحليل البيانات وتقديم المعلومات اللازمة لاتخاذ القرارات التجارية.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-chart-line info-icon"></i>
+                    <div class="info-title">أدوات التحليل</div>
+                    <div class="info-description">Tableau<br>Power BI<br>QlikView<br>SAP BusinessObjects<br>Oracle BI</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-database info-icon"></i>
+                    <div class="info-title">مصادر البيانات</div>
+                    <div class="info-description">قواعد البيانات<br>الملفات النصية<br>الخدمات السحابية<br>المصادر الخارجية</div>
+                </div>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-users info-icon"></i>
+                    <div class="info-title">المستخدمون</div>
+                    <div class="info-description">المدراء التنفيذيون<br>المحللون<br>المديرون<br>المشرفون</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-chart-bar info-icon"></i>
+                    <div class="info-title">أنواع التقارير</div>
+                    <div class="info-description">تقارير يومية<br>تقارير أسبوعية<br>تقارير شهرية<br>تقارير سنوية</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>فوائد Business Intelligence:</p>
+                <ul class="benefits-list">
+                    <li>تحسين اتخاذ القرارات</li>
+                    <li>فهم أفضل للعملاء</li>
+                    <li>تحسين الأداء التشغيلي</li>
+                    <li>اكتشاف الفرص الجديدة</li>
+                    <li>تقليل التكاليف</li>
+                    <li>تحسين خدمة العملاء</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-bullseye info-icon"></i>
+                    <div class="info-title">أمثلة على الاستخدامات</div>
+                    <div class="info-description">تحليل أداء المبيعات<br>فهم سلوك العملاء<br>تحسين سلسلة التوريد<br>تحليل الأرباح والخسائر</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-chart-network info-icon"></i>
+                    <div class="info-title">كيفية العمل</div>
+                    <div class="info-description">1. جمع البيانات<br>2. تنظيف وتحليل البيانات<br>3. إنشاء التقارير<br>4. تقديم المعلومات للمستخدمين</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>أمثلة عملية:</p>
+                <ul class="benefits-list">
+                    <li>شركة تجارية: تحليل أداء المبيعات وتحديد أفضل المنتجات</li>
+                    <li>بنك: تحليل سلوك العملاء وتحسين الخدمات المصرفية</li>
+                    <li>شركة طيران: تحليل أداء الرحلات وتحسين جدولة الطائرات</li>
+                    <li>متجر إلكتروني: تحليل سلوك الزوار وتحسين تجربة التسوق</li>
+                </ul>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tools info-icon"></i>
+                    <div class="info-title">نصائح مهمة</div>
+                    <div class="info-description">ضمان جودة البيانات<br>تحديد الأهداف بشكل واضح<br>تدريب المستخدمين<br>تحديث البيانات بانتظام</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-info-circle info-icon"></i>
+                    <div class="info-title">تحديات</div>
+                    <div class="info-description">جودة البيانات<br>تدريب المستخدمين<br>التكلفة<br>التحديث المستمر</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- إضافات جديدة -->
+        <div class="term-card">
+            <h2 class="term-title">WPA و WPA2 و WPA3</h2>
+            <p class="term-subtitle">(Wi-Fi Protected Access)</p>
+            <p>بروتوكولات تشفير لشبكات الواي فاي.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-wifi info-icon"></i>
+                    <div class="info-title">WPA</div>
+                    <div class="info-description">النسخة الأولى من التشفير - يستخدم TKIP<br>تم استبداله بسبب نقاط الضعف</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-shield-alt info-icon"></i>
+                    <div class="info-title">WPA2</div>
+                    <div class="info-description">الأكثر استخداماً حالياً - يستخدم AES<br>يستخدم تشفير CCMP<br>يستخدم مفاتيح تشفير فريدة لكل جهاز</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-lock info-icon"></i>
+                    <div class="info-title">WPA3</div>
+                    <div class="info-description">أحدث وأكثر أماناً - يستخدم تشفير SAE<br>يمنع التخمين المتكرر للكلمات المرور<br>يحمي الاتصالات حتى بعد التشفير</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>نصائح لتحسين أمان الواي فاي:</p>
+                <ul class="benefits-list">
+                    <li>استخدام WPA3 إذا كان متاحاً</li>
+                    <li>تغيير كلمة المرور بانتظام</li>
+                    <li>عدم استخدام كلمات مرور بسيطة</li>
+                    <li>تعطيل خاصية WPS</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="term-card">
+            <h2 class="term-title">NAT-PMP و UPnP</h2>
+            <p class="term-subtitle">(NAT Port Mapping Protocol و Universal Plug and Play)</p>
+            <p>بروتوكولات تسهل توجيه المنافذ في الشبكات.</p>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-network-wired info-icon"></i>
+                    <div class="info-title">NAT-PMP</div>
+                    <div class="info-description">بروتوكول آبل لفتح المنافذ</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-plug info-icon"></i>
+                    <div class="info-title">UPnP</div>
+                    <div class="info-description">يسمح للأجهزة بالاتصال تلقائياً</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="term-card">
+            <h2 class="term-title">QoS</h2>
+            <p class="term-subtitle">(Quality of Service)</p>
+            <p>تقنية تحكم في جودة الخدمة وتنظيم حركة البيانات.</p>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-tasks info-icon"></i>
+                    <div class="info-title">كيف يعمل</div>
+                    <div class="info-description">يصنف البيانات حسب الأولوية<br>يحدد حجم النطاق لكل نوع من البيانات<br>يتحكم في تأخير وفقدان البيانات</div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-puzzle-piece info-icon"></i>
+                    <div class="info-title">التطبيقات</div>
+                    <div class="info-description">الاتصالات الصوتية والفيديو<br>الألعاب عبر الإنترنت<br>نقل الملفات الكبيرة</div>
+                </div>
+            </div>
+
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>مثال عملي:</p>
+                <ul class="benefits-list">
+                    <li>إعطاء الأولوية للاتصالات الصوتية</li>
+                    <li>ضمان جودة الفيديو المباشر</li>
+                    <li>تحسين أداء الألعاب عبر الإنترنت</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="term-card">
+            <h2 class="term-title">DMZ</h2>
+            <p class="term-subtitle">(Demilitarized Zone)</p>
+            <p>منطقة عازلة بين الشبكة الداخلية والإنترنت.</p>
+            
+            <div class="additional-info">
+                <i class="fas fa-info-circle"></i>
+                <p>تستخدم لحماية الخوادم العامة مثل المواقع الإلكترونية من الهجمات الخارجية.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
