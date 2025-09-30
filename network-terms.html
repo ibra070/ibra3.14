@@ -126,89 +126,88 @@
             color: var(--secondary-color);
         }
 
+        /* Table of Contents Styling */
         .table-of-contents {
-            margin: 2rem 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #f0f7ff 100%);
-            border-radius: 15px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             padding: 1.5rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .table-of-contents h2 {
             color: #1e40af;
             text-align: center;
             margin-bottom: 1.5rem;
-            padding-bottom: 1rem;
-            border-bottom: 2px solid #e0e7ff;
+            font-size: 1.5rem;
             position: relative;
+            padding-bottom: 0.5rem;
         }
 
         .table-of-contents h2::after {
-            content: "";
+            content: '';
             position: absolute;
-            bottom: -2px;
-            right: 50%;
-            transform: translateX(50%);
-            width: 100px;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
             height: 3px;
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
             border-radius: 3px;
         }
 
         .toc-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .toc-column {
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-            padding: 0.5rem;
+            gap: 1.5rem;
         }
 
         .toc-column h3 {
-            color: #3b82f6;
-            margin: 0.5rem 0;
-            padding-right: 0.5rem;
-            border-right: 3px solid #3b82f6;
+            color: #1e293b;
             font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
         }
 
         .toc-column a {
             display: flex;
             align-items: center;
-            padding: 0.6rem 1rem;
-            background: white;
-            border-radius: 8px;
+            justify-content: space-between;
+            padding: 0.6rem 0.8rem;
+            margin: 0.3rem 0;
             text-decoration: none;
-            color: #4b5563;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e5e7eb;
-        }
-
-        .toc-column a:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            color: #3b82f6;
-            border-color: #bfdbfe;
+            color: #334155;
             background: #f8fafc;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+            border-right: 3px solid transparent;
+            direction: rtl;
         }
 
-        .toc-column a::before {
-            content: "•";
-            color: #3b82f6;
-            margin-left: 8px;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+        .toc-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background: #e0f2fe;
+            color: #0369a1;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
         }
 
-        .toc-column a:hover::before {
-            transform: scale(1.5);
+        .toc-column a:hover .toc-number {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .toc-column a::after {
+            content: "-";
+            margin-right: 0.3rem;
+            color: #94a3b8;
         }
 
         @media (max-width: 768px) {
@@ -233,41 +232,41 @@
 
         <!-- فهرس المحتويات -->
         <div class="term-card table-of-contents">
-            <h2>Table of Contents</h2>
+            <h2>فهرس المحتويات</h2>
             <div class="toc-grid">
                 <div class="toc-column">
                     <h3>أساسيات الشبكات</h3>
-                    <a href="#dhcp">DHCP</a>
-                    <a href="#nat">NAT</a>
-                    <a href="#isp">ISP</a>
-                    <a href="#mac-address">MAC Address</a>
-                    <a href="#dns">DNS</a>
-                    <a href="#url">URL</a>
+                    <a href="#dhcp"><span class="toc-number">1</span>DHCP</a>
+                    <a href="#nat"><span class="toc-number">2</span>NAT</a>
+                    <a href="#isp"><span class="toc-number">3</span>ISP</a>
+                    <a href="#mac-address"><span class="toc-number">4</span>MAC Address</a>
+                    <a href="#dns"><span class="toc-number">5</span>DNS</a>
+                    <a href="#url"><span class="toc-number">6</span>URL</a>
                 </div>
                 <div class="toc-column">
                     <h3>مكونات الشبكة</h3>
-                    <a href="#modem">Modem</a>
-                    <a href="#router">Router</a>
-                    <a href="#gateway">Gateway</a>
-                    <a href="#mesh-network">Mesh Network</a>
-                    <a href="#vlan">VLAN</a>
-                    <a href="#arp">ARP</a>
+                    <a href="#modem"><span class="toc-number">7</span>Modem</a>
+                    <a href="#router"><span class="toc-number">8</span>Router</a>
+                    <a href="#gateway"><span class="toc-number">9</span>Gateway</a>
+                    <a href="#mesh-network"><span class="toc-number">10</span>Mesh Network</a>
+                    <a href="#vlan"><span class="toc-number">11</span>VLAN</a>
+                    <a href="#arp"><span class="toc-number">12</span>ARP</a>
                 </div>
                 <div class="toc-column">
                     <h3>الأمان والحماية</h3>
-                    <a href="#ssl-tls">SSL/TLS</a>
-                    <a href="#wpa">WPA/WPA2/WPA3</a>
-                    <a href="#http-https">HTTP/HTTPS</a>
-                    <a href="#qos">QoS</a>
-                    <a href="#dmz">DMZ</a>
+                    <a href="#ssl-tls"><span class="toc-number">13</span>SSL/TLS</a>
+                    <a href="#wpa"><span class="toc-number">14</span>WPA/WPA2/WPA3</a>
+                    <a href="#http-https"><span class="toc-number">15</span>HTTP/HTTPS</a>
+                    <a href="#qos"><span class="toc-number">16</span>QoS</a>
+                    <a href="#dmz"><span class="toc-number">17</span>DMZ</a>
                 </div>
                 <div class="toc-column">
                     <h3>تقنيات متقدمة</h3>
-                    <a href="#api">API</a>
-                    <a href="#ipv4-ipv6">IPv4/IPv6</a>
-                    <a href="#3-tier-architecture">3-Tier Architecture</a>
-                    <a href="#bi">Business Intelligence</a>
-                    <a href="#nat-pmp">NAT-PMP/UPnP</a>
+                    <a href="#api"><span class="toc-number">18</span>API</a>
+                    <a href="#ipv4-ipv6"><span class="toc-number">19</span>IPv4/IPv6</a>
+                    <a href="#3-tier-architecture"><span class="toc-number">20</span>3-Tier Architecture</a>
+                    <a href="#bi"><span class="toc-number">21</span>Business Intelligence</a>
+                    <a href="#nat-pmp"><span class="toc-number">22</span>NAT-PMP/UPnP</a>
                 </div>
             </div>
         </div>
